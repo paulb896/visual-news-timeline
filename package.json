@@ -1,0 +1,17 @@
+{
+  "name": "visual-news-timeline",
+  "version": "1.0.0",
+  "description": "View stories from a news source plotted on a timeline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.2.1",
+    "apollo-server": "^2.2.6",
+    "graphql": "^14.0.2"
+  }
+}
