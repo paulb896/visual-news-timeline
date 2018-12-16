@@ -4,6 +4,7 @@ A tool that renders news articles on a modifiable timeline, also filtered by lan
 
 ## Setup
 
+    export set NEWS_API_KEY=<YOUR_API_KEY_HERE>
     npm i
 
 ## Run Server
@@ -13,7 +14,6 @@ A tool that renders news articles on a modifiable timeline, also filtered by lan
 ## Example Queries
 
 ### Get all Supported Types and Sources
-
 
 #### Raw GraphQL Query
 
