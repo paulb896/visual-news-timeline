@@ -1,8 +1,6 @@
-# Chat Notes Client
+# Visual News Timeline Client
 
-Create and edit notes using shared logic on server and client.
-
-Uses SystemJS to load templates from an app server and Apollo Client to retrieve chat messages from the server.
+Show News Articles on a timeline for a given time range.
 
 ## Install
 
