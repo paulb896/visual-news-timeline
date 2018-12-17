@@ -11,6 +11,10 @@ Uses SystemJS to load templates from an app server and Apollo Client to retrieve
 ## Run local Server
 
     npm start
+    
+## Run Component Tests
+
+    npm test
 
 The app should now be running here: [http://localhost:3000](http://localhost:3000)
 
