@@ -1,7 +1,7 @@
 # Visual News Timeline
 
-A tool that renders news articles on a modifiable timeline, also filtered by language, source, and search text. Uses a news aggregator as it's main data source, go to [News API](https://newsapi.org/) or [Guardian API](https://open-platform.theguardian.com/access/) to get an API key, which is configured with server environment variables.
+A tool that renders news articles on a modifiable timeline, also filtered by language, source, and search text. Uses a a configurable data source, go to [News API](https://newsapi.org/) or [Guardian API](https://open-platform.theguardian.com/access/) to get an API key, which is [configured with server environment variables](./server#setup).
 
-## [Example React Web Client](./client)
+## [React Web Client](./client) Calls the GraphQL server to get News data.
 
-## [GraphQL Server](./server)
+## [GraphQL Server](./server) Exposes a GraphQL endpoint containing queries for fetching News Articles.
