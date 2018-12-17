@@ -7,12 +7,14 @@ class Article extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         const { articleBody, headline, id, publishedAt, url } = props;
+        const [date, time] = publishedAt.split('T');
 
         this.state = {
             articleBody,
             headline,
             id,
-            publishedAt,
+            publishedAt: date,
+            time: time.split('Z')[0],
             url
         };
     }
@@ -23,7 +25,7 @@ class Article extends React.Component<any, any> {
                 <a href={ this.state.url }>
                   <h3>{ this.state.headline }</h3>
                 </a>
-                <p>{ this.state.publishedAt }</p>
+                <p>{ this.state.publishedAt } - { this.state.time }</p>
                 <p>{ this.state.articleBody }</p>
             </div>
         );

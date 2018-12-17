@@ -4,6 +4,10 @@ A tool that renders news articles on a modifiable timeline, also filtered by lan
 
 ## Setup
 
+The main script uses the following environment variables to configure the app:  `NEWS_API_KEY` and `NEWS_API_TYPE`.
+
+    # OPTIONAL, default "newsApi", ["guardian", "newsApi"]
+    export set NEWS_API_TYPE=guardian
     export set NEWS_API_KEY=<YOUR_API_KEY_HERE>
     npm i
 

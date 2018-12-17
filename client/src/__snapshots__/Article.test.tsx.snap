@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article renders correctly 1`] = `
+<div
+  className="article"
+>
+  <a
+    href="https://www.theguardian.com/world/2018/oct/17/on-a-high-canada-celebrates-cannabis-being-legalised"
+  >
+    <h3>
+      On a high: Canada celebrates cannabis being legalised
+    </h3>
+  </a>
+  <p>
+    2018-10-17
+     - 
+    18:41:34
+  </p>
+  <p>
+    At five seconds past midnight, Ian Power became the owner of the first gram of recreational cannabis to be sold in Canada. After waiting for hours in the cold, Power strode excitedly into the only cannabis store open in St John’s, Newfoundland, and made his purchase.
+  </p>
+</div>
+`;

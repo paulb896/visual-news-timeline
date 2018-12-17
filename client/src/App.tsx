@@ -12,8 +12,7 @@ class App extends React.Component<any, any> {
 
         this.state = {
             articleDateFrom: '2018-12-11',
-            articleDateTo: '2018-12-15',
-            articleMessage: '',
+            articleDateTo: new Date().toISOString().split('T')[0],
             articleSearchText: 'mars',
             articles: []
         };
@@ -38,7 +37,6 @@ class App extends React.Component<any, any> {
             dateFrom,
             dateTo
         ).then(articles => {
-            window.console.log("LOADED ARTICLES", articles);
             this.setState({ articles })
         });
     }
@@ -97,10 +95,10 @@ class App extends React.Component<any, any> {
         return (
             <div className="App">
                 <header className="App-header">
-                    <h1 className="App-title">News Articles on a Timeline</h1>
+                    <h1 className="App-title">News Article Timeline</h1>
 
                     <div className="search-article">
-                    Search For
+                    Search
                     <input
                         className="search-article_text"
                         type="text"
