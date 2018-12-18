@@ -1,12 +1,12 @@
-// import debounce from 'lodash.debounce'
 import * as React from 'react';
 import './App.css';
 import Article from './Article';
 import ArticlesService from './ArticlesService';
+import NewsTimeline from './NewsTimeline';
 
 class App extends React.Component<any, any> {
     private articlesService : ArticlesService;
-
+ 
     public constructor(props: any) {
         super(props);
 
@@ -14,12 +14,15 @@ class App extends React.Component<any, any> {
             articleDateFrom: '2018-12-11',
             articleDateTo: new Date().toISOString().split('T')[0],
             articleSearchText: 'mars',
-            articles: []
+            articles: [],
+            previous: 0,
+            value: 0
         };
         this.articlesService = new ArticlesService('http://localhost:4000/graphql');
         this.handleArticleSearchTextChange = this.handleArticleSearchTextChange.bind(this);
         this.handleArticleDateFromChange = this.handleArticleDateFromChange.bind(this);
         this.handleArticleDateToChange = this.handleArticleDateToChange.bind(this);
+        this.updateState = this.updateState.bind(this);
 
         this.loadArticles(
             this.state.articleSearchText,
@@ -118,7 +121,9 @@ class App extends React.Component<any, any> {
                         value={this.state.articleDateTo} />
                 </div>
                 </header>
-                <div className="articles">
+
+                { this.renderNewsTimeline(this.state.articles) }
+                <div className="articles" hidden={true}>
                 {
                     this.state.articles.map((article: any, index: number) => {
                         return (
@@ -135,6 +140,14 @@ class App extends React.Component<any, any> {
                 </div>
             </div>
         );
+    }
+
+    private renderNewsTimeline(articles) {
+        return(<NewsTimeline articles={ articles } />);
+    }
+
+    private updateState(index) {
+        this.setState({ value: index, previous: this.state.value });
     }
 }
 

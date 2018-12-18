@@ -6,7 +6,7 @@ module.exports = resolvers = {
       return dataSources.newsApi.getTopRecentArticles();
     },
     articles: async(_source, { from, to, searchText}, { dataSources }) => {
-      return dataSources.newsApi.getArticlesBetweenRange(from, to, searchText)
+      return dataSources.newsApi.getArticlesBetweenRange(from, to, searchText);
     },
     articleSources: async (_source, _args, { dataSources }) => {
       return dataSources.newsApi.getArticleSources();

@@ -41,7 +41,10 @@ module.exports = class NewsApiDataSource extends RESTDataSource {
       }, {
         currentKeys: {},
         reducedResults: []
-      }).reducedResults;
+      }).reducedResults
+      .sort((article1, article2) => {
+        return (new Date(article1.publishedAt) - new Date(article2.publishedAt));
+      });
   }
 
   async getArticleSources(language = 'en') {
