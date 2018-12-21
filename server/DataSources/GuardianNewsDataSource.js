@@ -25,7 +25,9 @@ module.exports = class GuardianNewsDataSource extends RESTDataSource {
         }, {
           currentKeys: {},
           reducedResults: []
-        }).reducedResults;
+        }).reducedResults.sort((article1, article2) => {
+          return (new Date(article1.publishedAt) - new Date(article2.publishedAt));
+        });
     }
   
     async getArticlesBetweenRange(from = '2018-12-09', to = '2018-12-18', query = '', language = 'en') {
@@ -42,7 +44,9 @@ module.exports = class GuardianNewsDataSource extends RESTDataSource {
         }, {
           currentKeys: {},
           reducedResults: []
-        }).reducedResults;
+        }).reducedResults.sort((article1, article2) => {
+          return (new Date(article1.publishedAt) - new Date(article2.publishedAt));
+        });
     }
   
     async getArticleSources() {

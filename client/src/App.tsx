@@ -4,21 +4,28 @@ import Article from './Article';
 import ArticlesService from './ArticlesService';
 import NewsTimeline from './NewsTimeline';
 
+const ARTICLE_API_BASE_URL = 'http://localhost:4000/graphql';
+
 class App extends React.Component<any, any> {
     private articlesService : ArticlesService;
  
     public constructor(props: any) {
         super(props);
 
+        const dateOffset = (24*60*60*1000); // 1 day
+        const currentDate = new Date();
+        const startDate = new Date();
+        startDate.setTime(currentDate.getTime() - dateOffset);
+
         this.state = {
-            articleDateFrom: '2018-12-11',
-            articleDateTo: new Date().toISOString().split('T')[0],
+            articleDateFrom: startDate.toISOString().split('T')[0],
+            articleDateTo: currentDate.toISOString().split('T')[0],
             articleSearchText: 'mars',
             articles: [],
             previous: 0,
             value: 0
         };
-        this.articlesService = new ArticlesService('http://localhost:4000/graphql');
+        this.articlesService = new ArticlesService(ARTICLE_API_BASE_URL);
         this.handleArticleSearchTextChange = this.handleArticleSearchTextChange.bind(this);
         this.handleArticleDateFromChange = this.handleArticleDateFromChange.bind(this);
         this.handleArticleDateToChange = this.handleArticleDateToChange.bind(this);
@@ -99,27 +106,23 @@ class App extends React.Component<any, any> {
             <div className="App">
                 <header className="App-header">
                     <h1 className="App-title">News Article Timeline</h1>
-
                     <div className="search-article">
-                    Search
-                    <input
-                        className="search-article_text"
-                        type="text"
-                        onChange={ this.handleArticleSearchTextChange }
-                        value={this.state.articleSearchText} />
-                    From
-                    <input
-                        className="search-date-from"
-                        type="text"
-                        onChange={ this.handleArticleDateFromChange }
-                        value={this.state.articleDateFrom} />
-                    To
-                    <input
-                        className="search-date-to"
-                        type="text"
-                        onChange={ this.handleArticleDateToChange }
-                        value={this.state.articleDateTo} />
-                </div>
+                        <input
+                            className="search-article_text"
+                            type="text"
+                            onChange={ this.handleArticleSearchTextChange }
+                            value={this.state.articleSearchText} />
+                        <input
+                            className="search-date-from"
+                            type="text"
+                            onChange={ this.handleArticleDateFromChange }
+                            value={this.state.articleDateFrom} />
+                        <input
+                            className="search-date-to"
+                            type="text"
+                            onChange={ this.handleArticleDateToChange }
+                            value={this.state.articleDateTo} />
+                    </div>
                 </header>
 
                 { this.renderNewsTimeline(this.state.articles) }

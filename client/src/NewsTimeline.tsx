@@ -26,12 +26,16 @@ class NewsTimeline extends React.Component<any, any> {
     }
 
     public render() {
-        const articleData = this.articles.map((article, index) => {
+        window.console.log('render', this.articles);
+        const articleData = this.articles
+            .map((article, index) => {
             return ({
                 component: (
                     <div className='container' key={index}>
-                    <h1>{ article.headline }</h1>
-                    <h4>{ article.publishedAt.split('T')[0] } { article.publishedAt.split('T')[1].split('Z')[0] }</h4>
+                    <h1 style={{fontWeight: 500 }}>{ article.headline }</h1>
+                    <h4 style={{fontWeight: 500 }}>
+                        {new Date(article.publishedAt).toLocaleTimeString('en-us', {year: 'numeric', month: 'short', day: '2-digit'})}
+                    </h4>
                     <hr />
                     <p style={{padding: '0 12% 0 12%'}}>{ article.articleBody }</p>
                     <hr />
@@ -44,8 +48,7 @@ class NewsTimeline extends React.Component<any, any> {
 
         return(
             <div>
-                {/* Bounding box for the Timeline */}
-                <div style={{ height: '1200px', margin: '0 auto' }}>
+                <div style={{ height: '1200px', margin: '0 auto', paddingTop: '15px' }}>
                     <HorizontalTimelineContent
                         content={articleData} />
                 </div>

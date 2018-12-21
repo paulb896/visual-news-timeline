@@ -22,14 +22,14 @@ export default class HorizontalTimelineContent extends React.Component {
       minEventPadding: 20,
       maxEventPadding: 120,
       linePadding: 100,
-      labelWidth: 300,
+      labelWidth: 120,
       fillingMotionStiffness: 150,
       fillingMotionDamping: 25,
       slidingMotionStiffness: 150,
       slidingMotionDamping: 25,
-      stylesBackground: 'transparent',
-      stylesForeground: '#2C3E50',
-      stylesOutline: 'rgba(10, 100, 100, 0.05)',
+      stylesBackground: '#ECF0F1',
+      stylesForeground: '#337ab7',
+      stylesOutline: 'rgba(50, 50, 50, 0.4)',
       isTouchEnabled: true,
       isKeyboardEnabled: true,
       isOpenEnding: true,
@@ -111,7 +111,11 @@ export default class HorizontalTimelineContent extends React.Component {
             isOpenEnding={state.isOpenEnding}
             // @ts-ignore
             isOpenBeginning={state.isOpenBeginning}
-            getLabel = { (date) => date && date.indexOf('T') && date.indexOf('Z') ? `${date.split('T')[0]} ${date.split('T')[1].split('Z')[0]}` : '' }
+            getLabel2 = { (date: string) => date && date.indexOf('T') && date.indexOf('Z')
+              ? `${date.split('T')[0]} at ${date.split('T')[1].split('Z')[0]}`
+              : ''
+            }
+            getLabel = { (date: string) => new Date(date).toLocaleTimeString('en-us', {year: 'numeric', month: 'short', day: '2-digit'}) }
           />
         </div>
         <div className='text-center'>
