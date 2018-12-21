@@ -1,6 +1,5 @@
 import * as React from 'react';
 import HorizontalTimelineContent from './HorizontalTimelineContent';
-// import './NewsTimeline.css';
 
 class NewsTimeline extends React.Component<any, any> {
 
@@ -9,7 +8,6 @@ class NewsTimeline extends React.Component<any, any> {
         super(props);
         const { articles } = props;
 
-        window.console.log('NewsTimeline.articles', articles, props)
         this.state = {
             articles
         };
@@ -26,7 +24,10 @@ class NewsTimeline extends React.Component<any, any> {
     }
 
     public render() {
-        window.console.log('render', this.articles);
+        if (!this.articles.length) {
+            return '';
+        }
+
         const articleData = this.articles
             .map((article, index) => {
             return ({
